@@ -3,6 +3,8 @@ package com.example.sprint1luis
 import android.os.Bundle
 import android.widget.CheckBox
 import android.widget.CompoundButton
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -33,5 +35,17 @@ class MainActivity : AppCompatActivity() {
         cbAndroid.setOnCheckedChangeListener(listenerCheckbox)
         cbReact.setOnCheckedChangeListener(listenerCheckbox)
         cbFlutter.setOnCheckedChangeListener(listenerCheckbox)
+
+        val rgModalidad = findViewById<RadioGroup>(R.id.rgModalidad)
+        rgModalidad.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId != -1) {
+                val radioSeleccionado = findViewById<RadioButton>(checkedId)
+                Toast.makeText(
+                    this,
+                    "Modalidad: ${radioSeleccionado.text}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 }
